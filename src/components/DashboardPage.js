@@ -1,12 +1,25 @@
 import React from 'react';
+import Tickets from './tickets';
+import TicketsForm from './TicketsForm';
+import { addTicket } from '../actions/tickets';
+import { connect } from 'react-redux';
 
 
-const DashboardPage = () => {
+const DashboardPage = (props) => {
   return (
     <div>
-      Dashboard page content
+      <h1>Ticket Manage System</h1>
+      <Tickets onSubmit={}/>
     </div>
   );
 };
 
-export default DashboardPage;
+const mapStateToProps = (state) => {
+  return {
+    Ticket: state.ticket
+  };
+};
+
+export default connect(mapStateToProps)(DashboardPage);
+
+

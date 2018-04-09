@@ -10,6 +10,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import './firebase/firebase';
 import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
+import { addTicket, removeTicket } from './actions/tickets';
 
 const store = configureStore();
 
@@ -42,3 +43,7 @@ firebase.auth().onAuthStateChanged((user) => {
     history.push('./')
   }
 });
+
+const ticketOne = store.dispatch(addTicket({title: 'concert', description: 'Jay chou'}));
+const ticketTwo = store.dispatch(addTicket({title: 'air', description: 'LA'}));
+store.dispatch(removeTicket({ id: ticketOne.ticket.id}));
