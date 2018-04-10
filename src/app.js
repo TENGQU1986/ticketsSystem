@@ -46,4 +46,5 @@ firebase.auth().onAuthStateChanged((user) => {
 
 const ticketOne = store.dispatch(addTicket({title: 'concert', description: 'Jay chou'}));
 const ticketTwo = store.dispatch(addTicket({title: 'air', description: 'LA'}));
-store.dispatch(removeTicket({ id: ticketOne.ticket.id}));
+// store.dispatch(removeTicket({ id: ticketOne.ticket.id}));
+// store.subscribe(() => console.log(store.getState()));

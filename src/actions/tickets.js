@@ -2,7 +2,7 @@ import uuid from 'uuid';
 
 //set action to ADD_TICKET
 
-export const addTicket = ({ title = '', description = '', assignee = '', criticality = '', date = 0, time = 0 } = {}) => ({
+export const addTicket = ({ title = '', description = '', assignee = '', criticality = '', date = 0, time = 0, status = '' } = {}) => ({
   type: 'ADD_TICKET',
   ticket: {
     title,
@@ -11,7 +11,8 @@ export const addTicket = ({ title = '', description = '', assignee = '', critica
     criticality,
     date,
     time,
-    id: uuid()
+    id: uuid(),
+    status
   }
 });
 

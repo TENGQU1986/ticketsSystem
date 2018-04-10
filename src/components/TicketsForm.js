@@ -8,7 +8,8 @@ class TicketsForm extends React.Component {
     criticality: '',
     date: 0,
     time: 0,
-    error: ''
+    error: '',
+    status
   };
 
   onTitleChange = (e) => {
@@ -39,18 +40,21 @@ class TicketsForm extends React.Component {
         assignee: this.state.assignee,
         criticality: this.state.criticality,
         date: this.state.date,
-        time: this.state.time
+        time: this.state.time,
+        status: 'todo'
       });
     }
   }
   render() {
     return (
       <div>
+        {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.onSubmit}>
           title: 
           <input
           type="text"
           placeholder="title"
+          autoFocus
           value={this.state.title}
           onChange={this.onTitleChange}
           />
