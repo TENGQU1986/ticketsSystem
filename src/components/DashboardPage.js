@@ -5,7 +5,9 @@ import { addTicket } from '../actions/tickets';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import TicketsListItem from './TicketsListItem';
-
+import TicketsInProgress from './TicketsInProgress';
+import TiciketsDone from './TicketsDone';
+import TicketsDone from './TicketsDone';
 
 
 const DashboardPage = (props) => {
@@ -15,15 +17,13 @@ const DashboardPage = (props) => {
       <Link to="/create">Add New Ticket</Link>
 
       <h2>To Do Tickets</h2>
-      {props.tickets.map((ticket) => {
-        return <TicketsListItem key={ticket.id} {...ticket}/>
-      })}
+        <TicketsListItem />
 
-      <h2>In Process Tickets</h2>
-        <p>some tickets in process</p>
+      <h2>In Progress Tickets</h2>
+        <TicketsInProgress />
 
       <h2>Done Tickets</h2>
-      <p>some tickets done</p>
+        <TicketsDone />
     </div>
   );
 };

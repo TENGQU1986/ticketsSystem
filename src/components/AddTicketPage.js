@@ -4,7 +4,8 @@ import { addTicket } from '../actions/tickets';
 import { connect } from 'react-redux';
 
 
-const AddTicketPage = (props) => (
+const AddTicketPage = (props) => {
+  return (
   <div>
     <h1>Add New Ticket</h1>
       <TicketsForm 
@@ -16,6 +17,8 @@ const AddTicketPage = (props) => (
 
   </div>
 );
+console.log(ticket);
+}
 
 
 

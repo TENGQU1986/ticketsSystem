@@ -44,7 +44,8 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
-const ticketOne = store.dispatch(addTicket({title: 'concert', description: 'Jay chou'}));
-const ticketTwo = store.dispatch(addTicket({title: 'air', description: 'LA'}));
+const ticketOne = store.dispatch(addTicket({title: 'concert', description: 'Jay chou', status:'in-progress'}));
+const ticketTwo = store.dispatch(addTicket({title: 'air', description: 'LA', status: 'done'}));
+const ticketThree = store.dispatch(addTicket({title: 'Bus', description: 'to the city', status:'todo'}));
 // store.dispatch(removeTicket({ id: ticketOne.ticket.id}));
 // store.subscribe(() => console.log(store.getState()));

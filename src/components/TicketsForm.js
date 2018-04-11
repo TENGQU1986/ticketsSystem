@@ -9,7 +9,7 @@ class TicketsForm extends React.Component {
     date: 0,
     time: 0,
     error: '',
-    status
+    status: 'todo'
   };
 
   onTitleChange = (e) => {
@@ -41,7 +41,7 @@ class TicketsForm extends React.Component {
         criticality: this.state.criticality,
         date: this.state.date,
         time: this.state.time,
-        status: 'todo'
+        status: this.state.status
       });
     }
   }

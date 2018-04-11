@@ -1,16 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { removeTicket } from '../actions/tickets';
+import { moveInProgress } from '../actions/tickets';
 
-const TicketsListItem = ({ dispatch, title, description, assignee, criticality, date, time, id }) => (
-  <div>
-    <h3>{title}</h3>
-    <p>{description}</p>
-    <button onClick={() => {
-      dispatch(removeTicket({ id }))
-    }}>Remove</button>
-  </div>
-);
+const TicketsListItem = (props) => {
+  const TicketsToDo = props.tickets.filter(ticket => ticket.status === 'todo');
+    const moveInProgress = ({ dispatch, id }) => {
+      dispatch(moveInProgress({ id }));
+    };
+    return (
+      <div>
+        {TicketsToDo.map((ticket) => {
+          return (
+            <div key={ticket.id}>
+              <h3>{ticket.title}</h3>
+              <p>{ticket.description}</p>
+              <button onClick={moveInProgress}>Move to progress</button>
+            </div>
+          );
+        })}
+      </div>
+    );
+};
 
 const mapStateToProps = (state) => {
   return {

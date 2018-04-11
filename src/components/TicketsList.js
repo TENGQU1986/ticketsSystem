@@ -6,7 +6,7 @@ const TicketsList = () => {
   return (
     <div>
       <AddTicketPage />
-      <TicketsListItem />
+      
     </div>
   );
 }
