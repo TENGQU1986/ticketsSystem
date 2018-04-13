@@ -11,13 +11,14 @@ const demoState = {
     assignee: 'agentA',
     criticality: '',
     date: 234,
-    time: 234
+    time: 234,
+    status: 'todo'
   }]
 };
 
 //set action to ADD_TICKET
 
-const addTicket = ({ title = '', description = '', assignee = '', criticality = '', date = 0, time = 0 } = {}) => ({
+const addTicket = ({ title = '', description = '', assignee = '', criticality = '', date = 0, time = 0, status = 'todo' } = {}) => ({
   type: 'ADD_TICKET',
   ticket: {
     title,
@@ -26,7 +27,8 @@ const addTicket = ({ title = '', description = '', assignee = '', criticality = 
     criticality,
     date,
     time,
-    id: uuid()
+    id: uuid(),
+    status
   }
 });
 
@@ -46,11 +48,23 @@ const ticketsReducer = (state = ticketsReducerDefaultState, action) => {
     case 'ADD_TICKET':
       return [...state, action.ticket];
     case 'REMOVE_TICKET':
-      return state.filter(({ id }) => id !== action.id)
+      return state.filter(({ id }) => id !== action.id);
+    case 'MOVE_IN_PROGRESS':
+      return {
+        ...state,
+        status: 'in-progress'
+      }
     default: 
       return state;
   }
 };
+
+//set action to change status
+
+const moveInProgress = ({ id } = {}) => ({
+  type: 'MOVE_IN_PROGRESS',
+  id
+}); 
 
 //Store creation
 
