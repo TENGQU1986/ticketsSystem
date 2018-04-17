@@ -11,6 +11,7 @@ const TicketsInProgress = (props) => {
           <div key={ticket.id}>
             <h3>{ticket.title}</h3>
             <p>{ticket.description}</p>
+            <h3>{ticket.status}</h3>
             <button>Move to done</button>
           </div>
         );

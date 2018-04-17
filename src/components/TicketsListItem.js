@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { removeTicket } from '../actions/tickets';
+import { removeTicket, moveInProgress } from '../actions/tickets';
 
 const TicketsListItem = (props, { id }) => {
   const TicketsToDo = props.tickets.filter(ticket => ticket.status === 'todo');
@@ -13,9 +13,7 @@ return (
           <h3>{ticket.title}</h3>
           <p>{ticket.description}</p>
           <h4>{ticket.status}</h4>
-          <button onClick={() => {
-            props.dispatch(removeTicket({ id }))
-          }}>Remove</button>
+          <button onClick={() => props.dispatch(moveInProgress(ticket.id))}>Remove</button>
         </div>
       );
     })}

@@ -39,6 +39,14 @@ const removeTicket = ({ id } = {}) => ({
   id
 });
 
+
+//set action to change status
+
+const moveInProgress = ({ id } = {}) => ({
+  type: 'MOVE_IN_PROGRESS',
+  id
+}); 
+
 //set ticket reducer 
 
 const ticketsReducerDefaultState = [];
@@ -59,12 +67,6 @@ const ticketsReducer = (state = ticketsReducerDefaultState, action) => {
   }
 };
 
-//set action to change status
-
-const moveInProgress = ({ id } = {}) => ({
-  type: 'MOVE_IN_PROGRESS',
-  id
-}); 
 
 //Store creation
 
@@ -78,6 +80,7 @@ store.subscribe(() => {
   console.log(store.getState());
 });
 
-const ticketOne = store.dispatch(addTicket({title: 'concert', description: 'Jay chou'}));
-const ticketTwo = store.dispatch(addTicket({title: 'air', description: 'LA'}));
-store.dispatch(removeTicket({ id: ticketOne.ticket.id}));
+const ticketOne = store.dispatch(addTicket({title: 'concert', description: 'Jay chou', status: 'todo'}));
+const ticketTwo = store.dispatch(addTicket({title: 'air', description: 'LA', status: 'in-progress'}));
+store.dispatch(moveInProgress({ id: ticketOne.ticket.id}));
+// store.dispatch(removeTicket({ id: ticketOne.ticket.id}));
